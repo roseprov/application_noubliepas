@@ -1,0 +1,147 @@
+.zone_utilisateur{
+  font-family: $economicaRegular;
+  position: relative;
+  height: 90px;
+
+  button{
+    vertical-align: middle;
+    background-color: transparent;
+    border: none;
+    color:white;
+    padding: 0;
+  }
+}
+
+//Icônes
+.ico_user{
+  display: block;
+  float: right;
+  font-size: 45px;
+  color: white;
+  &:hover{
+    transition: 0.5s ease;
+    color: $cornflowerBlue;
+  }
+}
+.user__menuLien{
+  .flaticon-user-3{
+  }
+  span:hover{
+    color:$cornflowerBlue;
+  }
+}
+
+.usersearch {
+  display: none;
+  @media(min-width: $breakpoint) {
+    display:inline-block;
+    float: right;
+    position: absolute;
+    right: span(1.2 of 12 wide);
+    top: 50%;
+    transform: translateY(-50%);
+    width: span(4 of 12);
+    text-align: right;
+
+    .btn_recherche{
+      margin-left: 5px;
+    }
+    input{
+      background-color: transparent;
+      border: solid 1px white;
+      padding: 1rem 0.5rem;
+      width: span(3 of 4);
+    }
+    input::placeholder{
+      color: white;
+    }
+    .flaticon-search{
+      font-size: 35px;
+    }
+  }
+}
+
+/****** États des liens ***********/
+.user {
+  &__menuLien {
+    display: inline-block;
+    padding: 0.5rem 0.7rem;
+    width: 100%;
+    .flaticon-login, .flaticon-user-3 {
+      font-size: 16px;
+    }
+    .flaticon-user-3{
+      display: inline;
+      float:none;
+      color:$tundora;
+    }
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: $tundora;
+    }
+    &:hover{
+      color:$cornflowerBlue;
+    }
+    &:active,
+    &:focus {
+      @include etatFocus;
+    }
+  }
+}
+.user {
+  @media(min-width: $breakpoint) {
+    display:inline-block;
+    position: absolute;
+    right:0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: span(3 of 12);
+    &__menu {
+      overflow: hidden; /* important pour ne pas voir les li s'en aller hors champs */
+      clear: both;
+      margin: 0.5rem 0;
+      padding: 0;
+      background-color: white;
+      position:absolute;
+      top: 67px;
+      right: 0;
+      width: span(3 of 3);
+      @include ombre;
+    }
+    &__menuItem {
+      border: none;
+      //border-bottom: 1px solid $tundora;
+      display: block;
+      position: relative;
+      transition: all .5s ease-in-out;
+      padding: 0.2rem 1rem;
+      color: $tundora;;
+    }
+  }
+}
+
+/* user__menu version mobile avec js*/
+.js {
+  .user {
+    display: none;
+    @media(min-width: $breakpoint) {
+      display: block;
+      &__menu--fermer .user__menuItem {
+        border: none;
+        display: none;
+
+      }
+      &__menu--ouvert .user__menuItem {
+        top: 0;
+
+      }
+      /* Bouton .user__menu__controle */
+      &__controle {
+        float:right;
+        margin-right:1rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,111 @@
+/**
+ * ----------------------------
+ * TABLE DES MATIÈRES - MIXINS
+ * ----------------------------
+ * base (BoxSizing, Clearfix)
+ * accessibilité
+ * typographie
+ * styles (ombre, radius, boutons et éléments de liste)
+ */
+
+
+
+/******** Utilitaires de base (BoxSizing, Clearfix) *********/
+/* BoxSizing */
+@mixin border-box-sizing{
+    * {
+        box-sizing: border-box;
+    }
+}
+
+/* Clearfix: pour contrer le problème des enfants flottants*/
+@mixin clearfix {
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
+
+/******** Utilitaires pour accessibilité *********/
+// Hide only visually, but have it available for screenreaders:
+// http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+
+    // Extends the .visuallyhidden class to allow the element to be focusable
+    // when navigated to via the keyboard: https://www.drupal.org/node/897638
+    &.focusable:active,
+    &.focusable:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+    }
+}
+.visuallyhidden{
+    @include visuallyhidden;
+}
+
+/******** Utilitaires pour typographie *********/
+// Fonction pour convertir une valeur de font-size en pixels à son équivalent rem
+@function calculateRem($size) {
+    $remSize: $size / 10px;
+    @return #{$remSize}rem;
+}
+// Mixin qui inclus la solution de repli en pixel suivi par la valeur calculée en rem
+@mixin fontSize($size) {
+    font-size: $size;
+    font-size: calculateRem($size);
+}
+
+/******** Utilitaires pour les styles *********/
+//Style pour l'ombre
+@mixin ombre{
+    box-shadow: 4px 4px 10px #C4C4C4;
+}
+
+//Style pour les boîtes arrondies
+@mixin boxRadius{
+    border-radius: 12px;
+}
+
+//Boutons
+@mixin boutonPrincipal{
+    background-color: $cornflowerBlue;
+    color: white;
+    font-family: $economicaBold;
+    @include fontSize(20px);
+    @include boxRadius;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px;
+}
+
+@mixin boutonAnnuler{
+    @include boutonPrincipal;
+    font-family: "Economica-Regular", Arial, sans-serif;
+    background-color: $dustyGray;
+}
+
+//Styles pour les éléments de liste
+@mixin boiteElementListe{
+    background: linear-gradient(to right, white, #f7f7f7);
+    @include ombre;
+    @include boxRadius;
+    margin: 5px 0;
+}
+
+@mixin boiteElementListeHover{
+    transform: translate(-2px, -2px);
+    transition: 0.5s ease-in-out;
+}

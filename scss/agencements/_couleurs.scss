@@ -1,0 +1,52 @@
+/*Propre au mandat A*/
+
+/*Choix de couleurs de la liste*/
+.choixcouleurs{
+  position:relative;
+  padding:0;
+
+  @media(min-width:$breakpoint){
+    margin: 20px span(1 of 7) 0 0;
+  }
+
+  .couleurs{
+    width: 100%;
+    display:flex;
+    padding:1rem 0;
+    margin-bottom:10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    li{
+      width: span(1 of 4);
+      @media(min-width:$breakpoint){
+        flex-basis:100px;
+        margin: 3px;
+      }
+
+      label{
+        display:block;
+        height: 100%;
+      }
+
+      input:checked+label:after{
+        content:attr(data-couleur);
+        position: absolute;
+        top: 2.8rem;
+        @media(min-width: $breakpoint){
+          top: 3.8rem;
+        }
+        left: 1rem;
+        z-index:2;
+        width: 80%;
+      }
+      input:hover+label img,
+      input:checked+label img{
+        transition: 0.5s ease;
+        border: 1px solid whitesmoke;
+        filter: opacity(70%);
+      }
+    }
+  }
+}
+

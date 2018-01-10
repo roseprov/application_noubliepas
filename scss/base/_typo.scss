@@ -1,0 +1,143 @@
+/**
+ * @author Prénom Nom courriel
+ * @todo ADAPTER ce fichier selon le projet
+**/
+
+/**
+ * --------------------------------------------------------
+ * TABLE DES MATIÈRES - Typographie responsive (Mobile First)
+ * --------------------------------------------------------
+ * Polices
+ * Base décimale
+ * Hiérarchie responsive
+ */
+
+
+/** Polices **/
+/*  //Exemple
+font-family: Raleway;
+  src:url(../polices/Raleway/raleway-regular.woff) format('woff'),
+  url(../polices/Raleway/raleway-regular.woff2)format('woff2'),
+  url(../polices/Raleway/raleway-regular.ttf) format('truetype');
+}
+*/
+
+@font-face{
+  font-family: "Economica-Regular";
+  src: url("../fonts/Economica/Economica-Regular.ttf") format("truetype");
+}@font-face{
+  font-family: "Economica-Bold";
+  src: url("../fonts/Economica/Economica-Bold.ttf") format("truetype");
+}@font-face{
+  font-family: "OpenSans-Regular";
+  src: url("../fonts/Open_Sans/OpenSans-Regular.ttf") format("truetype");
+}@font-face{
+  font-family: "OpenSans-Bold";
+  src: url("../fonts/Open_Sans/OpenSans-Bold.ttf") format("truetype");
+}
+
+
+/** Base décimale **/
+html{
+  font-size: 62.5%;
+}
+body {
+  /* 16px pour toutes les largeurs d'écran */
+  @include fontSize(16px);
+  /* facteur multiplicateur de la taille de la police 1.375x16 = 22 */
+  line-height: 1.375;
+  font-family: $openSansRegular;
+}
+@media (min-width: $mobile) {
+  body {
+    line-height: 1.5;
+  }
+}
+@media (min-width: $desktop) {
+  body {
+    line-height: 1.75;
+  }
+}
+
+/** Hiérarchie responsive **/
+/*  plus proche = plus petit  &  plus loin = plus grand */
+h1,
+.h1 { /* = 32px */
+  @include fontSize(36px);
+  font-family: $openSansBold;
+}
+@media (min-width: $mobile) {
+  h1,
+  .h1 { /* = 40px */
+    @include fontSize(40px);
+  }
+}
+@media (min-width: $desktop) {
+  h1,
+  .h1 { /* = 48px */
+    @include fontSize(48px);
+  }
+}
+
+h2,
+.h2 { /* = 24px */
+  @include fontSize(24px);
+  font-family: $openSansBold;
+}
+@media (min-width: $mobile) {
+  h2,
+  .h2 { /* = 32px */
+    @include fontSize(32px);
+  }
+}
+@media (min-width: $desktop) {
+  h2,
+  .h2 { /* = 36px */
+    @include fontSize(36px);
+  }
+}
+
+h3,
+.h3 { /* = 18px */
+  @include fontSize(18px);
+  font-family: $openSansBold;
+}
+@media (min-width: $mobile) {
+  h3,
+  .h3 {  /* = 24px */
+    @include fontSize(24px);
+  }
+}
+@media (min-width: $desktop) {
+  h3,
+  .h3 { /* = 30px */
+    @include fontSize(30px);
+  }
+}
+
+h4,
+.h4 { /* = 16px */
+  @include fontSize(16px);
+  font-family: $openSansBold;
+}
+@media (min-width: $mobile) {
+  h4,
+  .h4 { /* = 18px */
+    @include fontSize(18px);
+  }
+}
+
+@media (min-width: $desktop) {
+  h4,
+  .h4 { /* = 22px */
+    @include fontSize(22px);
+  }
+}
+
+.contenu{
+  font-family: $openSansRegular;
+}
+
+.interactivite{
+  font-family: $economicaRegular;
+}

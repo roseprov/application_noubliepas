@@ -1,0 +1,205 @@
+/****** Mixins du menu ******/
+@mixin etatFocus {
+  outline-offset: -5px;
+}
+
+@mixin boutonMenu{
+  background-color: transparent;
+  border: none;
+  width: 60px;
+  padding-top: 0.5rem;
+
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  z-index:100;
+
+  .menu__libelle {
+    @include fontSize(16px);
+    font-family: $economicaRegular;
+    text-transform: uppercase;
+    display: block;
+    color: white;
+  }
+  .menu__icone {
+    width: 100%;
+    display: inline-block;
+    padding: 5px 5px 0px 5px;
+    border: 2px solid white;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    fill: white;
+  }
+}
+
+/****** États des liens ******/
+.menu {
+  &__lien {
+    display: block;
+    padding: 0;
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: black;
+    }
+    &:hover{
+      color: $cornflowerBlue;
+    }
+    &:active,
+    &:focus {
+      @include etatFocus;
+    }
+  }
+}
+
+/****** Général ******/
+.menu{
+  @media (min-width: $breakpoint) {
+    width: span(4 wide of 12);
+  }
+  align-self: flex-start;
+  .imgRadius{
+    width: 20px;
+  }
+  p{
+    background-color: $yellowGreen;
+    margin: 0;
+  }
+  .userzone{
+    border-bottom: 0.5px solid $tundora;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    .menu__userzone{
+      padding-left: 0;
+    }
+    @media (min-width: $breakpoint){
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .menu__listeItem{
+      padding: 0;
+    }
+  }
+  input{
+    height: 35px;
+    padding-left: 10px;
+    width: 80%;
+  }
+  button{
+    background-color: transparent;
+    border: none;
+    vertical-align: middle;
+    padding-right: 0;
+  }
+  &__liste {
+    background-color: white;
+    @include ombre;
+    clear: both;
+    margin: 0;
+    padding-bottom: 15px;
+    padding-left: 0;
+  }
+  &__listeItem {
+    border: none;
+    display: block;
+    position: relative;
+    transition: all .5s ease-in-out;
+    padding: 0 15px;
+  }
+  .recherche{
+    padding: 1px 5px 10px 5px;
+  }
+  &__listeItem:first-child{
+    padding: 0;
+    @media (min-width: $breakpoint) {
+      padding-bottom: 10px;
+    }
+  }
+  &__sousListe{
+    padding-left: 0;
+    span{
+      padding-left: 5px;
+    }
+  }
+  &__sousListeItem__couleur{
+    width: 2rem;
+  }
+}
+
+/****** Textes et flaticons ******/
+.menu {
+  .flaticon, p{
+    line-height: 1.3;
+  }
+  [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+  [class^="flaticon-"]:after, [class*=" flaticon-"]:after{
+    @include fontSize(40px);
+    margin: 0;
+    padding-right: 1rem;
+    @media (min-width: $breakpoint) {
+      @include fontSize(50px);
+    }
+  }
+  button{
+    [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+    [class^="flaticon-"]:after, [class*=" flaticon-"]:after{
+      @include fontSize(35px);
+    }
+  }
+  p{
+    font-family: $economicaBold;
+    @include fontSize(30px);
+    text-align: center;
+  }
+  &__sousListe {
+    font-family: $openSansRegular;
+    @include fontSize(16px);
+  }
+  &__liste {
+    @include fontSize(24px);
+    @media (min-width: $breakpoint) {
+      @include fontSize(30px);
+    }
+  }
+}
+
+/****** Menu version mobile avec js ******/
+.js {
+  .menu{
+    display:block;
+  }
+  .menu {
+    &__liste{
+      @media (min-width: $desktop) {
+        .mobile{
+          display: none;
+        }
+      }
+    }
+    &__liste--fermer{
+      padding-bottom: 0;
+      @media (min-width: $breakpoint) {
+        padding-bottom: 15px;
+      }
+    }
+    &__liste--fermer .menu__listeItem {
+      border: none;
+      display: none;
+      @media(min-width: 601px) {
+        display: block;
+      }
+    }
+    &__liste--ouvert .menu__listeItem {
+      max-height: auto;
+      top: 0;
+    }
+    /* Bouton .menu__controle */
+    &__controle {
+      @include boutonMenu;
+      @media(min-width: 601px) {
+        display: none;
+      }
+    }
+  }
+}

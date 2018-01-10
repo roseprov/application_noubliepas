@@ -1,0 +1,315 @@
+@charset "UTF-8";
+/**
+ * @author Prénom Nom courriel
+ * @todo à personnaliser
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * LIBs (bower_components)
+ ** Normalize
+ ** Susy
+ * UTILITAIRES
+ ** variables
+ ** mixins
+ * BASE
+ ** General
+ ** Typographie
+ ** Hyperliens
+ ** Réglages de Susy
+ * MODULES
+ **
+ * AGENCEMENTS
+ **
+ **
+ */
+
+
+/****** LIBs ******/
+/**** Normalize ****/
+@import "../bower_components/normalize-scss/sass/normalize";
+/**** Système de grille fluide - Susy ****/
+@import "../bower_components/susy/sass/susy";
+@import "../bower_components/susy/sass/plugins/svg-grid";
+
+
+/**** Utilitaires ****/
+@import "utilitaires/variables";
+@import "utilitaires/mixins";
+
+
+/*********************
+ * BASE
+ *********************/
+
+/***** Général ******/
+@import "base/general";
+
+/**** Typographie ****/
+@import "base/typo";
+
+/**** Hyperliens ****/
+@import "base/hyperliens";
+
+/****** LIB ******/
+@import "lib/flaticon";
+
+/**** Navigation ****/
+@import "menu";
+@import "user_menu";
+
+/**** Réglages de Susy ****/
+@include border-box-sizing;
+
+@media(max-width:600px){
+  $susy: (
+          'columns': susy-repeat(4),
+          'gutters': 0.25
+  );
+  .wrap {
+    //background: susy-svg-grid((
+    //        'columns': susy-repeat(4),
+    //        'gutters': 0.25
+    //)) no-repeat scroll;
+  }
+}
+@media(min-width:601px){
+  $susy: (
+          'columns': susy-repeat(12),
+          'gutters': 0.25
+  );
+  .wrap {
+    max-width:1000px;
+    margin: 0 auto;
+    //background: susy-svg-grid((
+    //        'columns': susy-repeat(12),
+    //        'gutters': 0.25
+    //)) no-repeat scroll;
+  }
+}
+
+/****** MODULES ******/
+@import "modules/optionEcheance";
+@import "modules/fenetreModale";
+
+
+/****** AGENCEMENTS ******/
+@import "agencements/couleurs";
+
+
+
+
+a{
+  color:black;
+}
+.contenu{
+  a:hover, a:focus{
+    color: $cornflowerBlue;
+  }
+  a:active{
+    color:$tundora;
+  }
+}
+
+
+
+.separateur{
+  border-bottom:solid 1px black;
+  display:inline-block;
+  width: span(2.75 of 4);
+  text-align: center;
+  margin: 0 span(0.5 wide of 4);
+
+  @media(min-width:$breakpoint) {
+    @include visuallyhidden;
+  }
+}
+
+/////////////////
+//// Accueil ////
+/////////////////
+.accueil{
+  @media(min-width:$breakpoint){
+    justify-content: space-between;
+    .interactivite{
+      @include visuallyhidden;
+    }
+  }
+}
+
+section{
+  display:inline-block;
+  margin: 0.5rem 1rem;
+}
+
+.section_aidememoire,
+.section_listes{
+  img{
+    width: 20px;
+    margin-right:1rem;
+  }
+}
+.conteneur-flex {
+  display: flex;
+  align-items: center;
+}
+
+.section_aidememoire{
+  @media(min-width:$breakpoint){
+    display: block;
+    position: -webkit-sticky;
+    position:sticky;
+    top:0;
+    width: span(5 of 12);
+  }
+  h2{
+    margin-bottom:1rem;
+  }
+  .ul_aidemesasmoire{
+    li{
+      margin: 1rem 0.5rem;
+      .rangee{
+        border-left: solid 1px black;
+        padding-left: 1rem;
+        .echeance{
+          display:inline-block;
+          width:span(4 of 4);
+          .flaticon-alarm{
+            font-size: 25px;
+          }
+        }
+        a{
+          display:inline-block;
+        }
+      }
+      .echeance_nom:hover{
+        color: $cornflowerBlue;
+      }
+    }
+  }
+}
+.section_listes{
+  @media(min-width:$breakpoint){
+    h2{
+      margin-bottom:1rem;
+    }
+    width:span(7 of 12);
+  }
+  .ajouter_liste{
+    .lien_ajouter {
+      .flaticon-plus {
+        font-size: 32px;
+        vertical-align: middle;
+      }
+      &:hover{
+        color:$cornflowerBlue;
+      }
+    }
+  }
+}
+.ul_liste{
+  li{
+    border-radius: 5px;
+    padding: 1.2rem;
+    //position:relative;
+
+    @include boiteElementListe;
+
+    .form_liste {
+      position: relative;
+      h3 {
+        display: inline-block;
+        margin: 0rem 0.5rem;
+        width: span(2.2 of 4);
+
+        @media(min-width: $breakpoint) {
+          line-height: 40px;
+        }
+        a {
+          display: inline-block;
+          &:hover {
+            @include boiteElementListeHover;
+            color: $cornflowerBlue;
+          }
+        }
+      }
+      .nb_items {
+        display: inline-block;
+      }
+      .liens_actions {
+        position: absolute;
+        right: gutter(4);
+        top: 50%;
+        transform: translateY(-50%);
+
+        .flaticon-edit, .flaticon-error {
+          font-size: 32px;
+          padding: 0.5rem;
+          &:hover {
+            color: $cornflowerBlue
+          }
+        }
+      }
+    }
+  }
+}
+//////////////////////////////
+//// Pages editer/ajouter ////
+//// liste                ////
+//////////////////////////////
+.contenu{
+  margin: 5px;
+  @media(min-width: $breakpoint){
+    margin-left: span(1 of 12);
+  }
+}
+.form_ajouterliste,
+.form_editerliste{
+  .nom_liste{
+    height: 40px;
+    width:span(3.5 of 4);
+    padding-left: 10px;
+    margin-top:10px;
+    margin-bottom: 20px;
+    font-family: "OpenSans-Regular", Arial, sans-serif;
+
+    @media(min-width: $breakpoint){
+      width: span(4 of 7);
+      margin-left: span(0.8 of 7);
+    }
+  }
+}
+.boutons{
+  display:flex;
+  justify-content: space-between;
+  @media(min-width: $breakpoint){
+    justify-content: center;
+  }
+  .btn_modifier,
+  .btn_ajouter{
+    border:none;
+    width: span(2 of 4);
+    @include boutonPrincipal;
+    &:hover{
+      background-color:$cornflowerBlue_L10;
+    }
+    @media(min-width: $breakpoint){
+      width: span(2 of 7);
+      padding: 10px;
+      margin-right: 15px;
+    }
+  }
+  .lien_annuler{
+    display:inline-block;
+    text-align:center;
+    @include boutonAnnuler;
+    &:hover{
+      background-color:$dustyGray_L10;
+      color:white;
+    }
+    width: span(2 of 4);
+    @media(min-width: $breakpoint){
+      width: span(2 of 7);
+      padding:10px;
+    }
+  }
+}

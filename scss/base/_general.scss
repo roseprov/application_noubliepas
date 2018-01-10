@@ -1,0 +1,148 @@
+/**
+ * @author Krystina Hamel
+ * @author Rose Provencher
+**/
+
+/**
+* ------------------
+* TABLE DES MATIÈRES
+* ------------------
+* Menu du header
+* Général
+* Footer
+* Validations
+**/
+
+/** Menu du header **/
+header{
+  background-color: $redDamask;
+  position:relative;
+  .logo{
+    width: span(2 wide of 4);
+    position:absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @media(min-width:$breakpoint){
+    display: block;
+    background-color: $redDamask;
+    height: 90px;
+
+    .div_logo{
+      position:absolute;
+      margin-left:auto;
+      margin-right:auto;
+      left:0;
+      right:0;
+      height: 100%;
+      width: span(12 of 12);
+    }
+  }
+}
+
+/** Général **/
+.lienEvitement{
+  text-align: center;
+  font-family: $openSansBold;
+  background-color: $cornflowerBlue;
+  color: white;
+  display: block;
+  width: 100%;
+}
+
+a{
+  text-decoration: none;
+}
+
+img{
+  max-width:100%;
+}
+
+.imgRadius{
+  border-radius: 50%;
+}
+
+.wrap{
+  @media(min-width: $breakpoint){
+    display:flex;
+  }
+}
+
+ul{
+  list-style: none;
+  padding:0;
+}
+
+.contenu{
+  @media (min-width: $breakpoint) {
+    width: span(7 of 12);
+    margin-left: span(1 wide of 12);
+  }
+}
+
+body{
+  margin: 0;
+}
+
+/** Footer **/
+footer{
+  width: 100%;
+  background-color: $yellowGreen;
+  font-family: $economicaRegular;
+  text-align: center;
+  margin-top: 100px;
+  small{
+    display: inline-block;
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+  p{
+    margin: 0;
+  }
+  b{
+    display: inline-block;
+    padding-top: 20px;
+  }
+  div{
+    margin-top: 15px;
+  }
+  img{
+    width: span(2 of 4);
+    @media (min-width: $breakpoint){
+      width: span(2 of 12);
+    }
+  }
+}
+
+/** Validations **/
+form{
+  .OK{
+    @include fontSize(30px);
+    color: green;
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    @media(min-width: $breakpoint){
+      @include fontSize(40px);
+      margin-left: 15px;
+    }
+  }
+  .erreur{
+    @include fontSize(16px);
+    color: red;
+    @media (min-width: $breakpoint){
+      margin-left: span(2 wide of 7);
+      width: span(4 of 7);
+    }
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .inputErreur{
+    border: 1px solid red;
+  }
+  .erreurElement{
+
+  }
+}

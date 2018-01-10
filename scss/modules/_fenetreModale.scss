@@ -1,0 +1,93 @@
+/***** Fenêtre Modale *****/
+
+/* Décrire l'animation */
+@keyframes slideDownFadeIN {
+  from {
+    top: -100px;
+    opacity: 0;
+  }
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+/* Foncer l'arrière-plan de la fenêtre modale */
+.modal {
+  display: none;
+  left: 0;
+  top: 0;
+  width: span(4 of 4);
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 98;
+}
+
+/* Afficher la fenêtre modale lorsqu'elle est ciblée par un lien supprimer */
+.modal:target {
+  display: table;
+  position:fixed;
+}
+
+/* Boite de la fenêtre modale */
+.modal-dialog {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* Contenu de la fenêtre modale */
+.modal-dialog .modal-content {
+  margin: auto;
+  background-color: #f3f3f3;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  border: 1px #777 solid;
+  text-align: justify;
+  width: 80%;
+  @media (min-width: $breakpoint) {
+    width: 50%;
+  }
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  /* ajouter une animation */
+  animation-name: slideDownFadeIN;
+  animation-duration: 0.5s;
+}
+
+.container {
+  padding: 2px 16px;
+  @include fontSize(15px);
+}
+
+.modal header {
+  @include clearfix;
+  background-color: #ccc;
+  p{
+    margin:0;
+    padding: 1rem;
+  }
+  @media(min-width:$breakpoint){
+    height:auto;
+  }
+}
+
+.modal footer {
+  color: white;
+  background-color: #ccc;
+  padding: 1rem;
+  text-align: right;
+  margin-top: 1rem;
+
+  .btn_annuler{
+    margin-right: 0.7rem;
+  }
+  .btn_supprimer{
+    padding: 0.5rem;
+    &:hover{
+      border: solid 1px $cornflowerBlue;
+    }
+  }
+}

@@ -1,0 +1,260 @@
+@charset "UTF-8";
+/**
+ * @author Prénom Nom courriel
+ * @todo à personnaliser
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * LIBs (bower_components)
+ ** Normalize
+ ** Susy
+ * UTILITAIRES
+ ** variables
+ ** mixins
+ * BASE
+ ** General
+ ** Typographie
+ ** Hyperliens
+ ** Réglages de Susy
+ * MODULES
+ **
+ * AGENCEMENTS
+ **
+ **
+ */
+
+
+/****** LIBs ******/
+/**** Normalize ****/
+@import "../bower_components/normalize-scss/sass/normalize";
+/**** Système de grille fluide - Susy ****/
+@import "../bower_components/susy/sass/susy";
+@import "../bower_components/susy/sass/plugins/svg-grid";
+
+
+/**** Utilitaires ****/
+@import "utilitaires/variables";
+@import "utilitaires/mixins";
+
+
+/*********************
+ * BASE
+ *********************/
+
+/***** Général ******/
+@import "base/general";
+
+/**** Typographie ****/
+@import "base/typo";
+
+/**** Icônes ****/
+@import "lib/_flaticon";
+
+/**** Hyperliens ****/
+@import "menu";
+@import "user_menu";
+
+/**** Réglages de Susy ****/
+@include border-box-sizing;
+
+@media(max-width:600px){
+  $susy: (
+          'columns': susy-repeat(4),
+          'gutters': 0.25
+  );
+  .wrap {
+  //  background: susy-svg-grid((
+  //          'columns': susy-repeat(4),
+  //          'gutters': 0.25
+  //  )) no-repeat scroll;
+  }
+}
+@media(min-width:601px){
+  $susy: (
+          'columns': susy-repeat(12),
+          'gutters': 0.25
+  );
+  .wrap {
+    max-width:1000px;
+    margin: 0 auto;
+    //background: susy-svg-grid((
+    //        'columns': susy-repeat(12),
+    //        'gutters': 0.25
+    //)) no-repeat scroll;
+  }
+}
+
+/****** MODULES ******/
+
+@import "modules/optionEcheance";
+
+
+/****** AGENCEMENTS MANDAT B ******/
+/** Toutes les pages mandat B **/
+.contenu{
+  img{
+    width: 25px;
+    @media (min-width: $breakpoint) {
+      width: 35px;
+    }
+  }
+  .titre{
+    display: flex;
+    align-items: baseline;
+    h1{
+      display: inline-block;
+      margin-bottom: 0;
+      line-height: 1.2;
+      margin-left: 10px;
+    }
+  }
+  margin-left: 5px;
+  margin-right: 5px;
+  @media (min-width: $breakpoint) {
+    margin-left: span(1 wide of 12);
+    margin-right: 0;
+  }
+}
+
+/** Page consulter liste **/
+.listeItems{
+  margin-bottom: 25px;
+  @media (min-width: $breakpoint) {
+    margin-right: span(1 wide of 7);
+  }
+  &__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include boiteElementListe;
+    padding: 10px;
+    width: 100%;
+    form, a{
+      display: inline-block;
+    }
+    time{
+      display: block;
+      font-weight: bold;
+    }
+    &--icones{
+      display: inline-block;
+      float: right;
+      min-width: 50%;
+      text-align: right;
+      @media (min-width: $breakpoint) {
+        min-width: 25%;
+      }
+      button{
+        background-color: transparent;
+        border: none;
+      }
+    }
+  }
+  &__item--lien{
+    display: inline-block;
+    @media (min-width: $breakpoint) {
+      width: 70%;
+    }
+  }
+}
+
+.boutonPrincipal{
+  @include boutonPrincipal;
+  width: 100%;
+  display: inline-block;
+  padding: 10px 15px;
+  text-align: center;
+  @media (min-width: $breakpoint) {
+    width: span(2 of 7);
+    margin-left: span(2 wide of 7);
+  }
+}
+
+/* Typo et flaticon */
+.listeItems{
+  @media (min-width: $breakpoint){
+    @include fontSize(24px);
+  }
+  [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+  [class^="flaticon-"]:after, [class*=" flaticon-"]:after{
+    @include fontSize(30px);
+    font-weight: bolder;
+  }
+}
+
+/* Effets sur les items */
+@media (min-width: $breakpoint) {
+  .listeItems__item--lien:hover{
+    @include boiteElementListeHover;
+    color: $cornflowerBlue
+  }
+  .flaticon-edit:hover,
+  .flaticon-error:hover,
+  .listeItems__item .listeItems__item--icones button:hover
+  {
+    color: $cornflowerBlue;
+  }
+  .boutonPrincipal:hover{
+    background-color: $cornflowerBlue_L10;
+  }
+}
+.listeItems{
+  a{
+    color: black;
+  }
+}
+
+
+/** Page éditer et ajouter item **/
+.editerAjouterItem{
+  .titre{
+    h1{
+      margin-left: 0;
+    }
+  }
+  h1 span{
+    @include fontSize(24px);
+  }
+  form{
+    margin-top: 30px;
+    input{
+      height: 40px;
+      padding-left: 10px;
+      width: span(3 wide of 4);
+      margin-top: 5px;
+      @media (min-width: $breakpoint) {
+        width: span(4 of 7);
+        margin-top: 0;
+        margin-left: 60px;
+      }
+      @include fontSize(16px);
+      font-family: $openSansRegular;
+    }
+  }
+  .boutons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    @media (min-width: $breakpoint) {
+      width: span(4 of 7);
+      margin-left: span(2 wide of 7);
+    }
+  }
+  .boutonPrincipal{
+    border: none;
+    width: span(2 of 4);
+    margin-left: 0;
+  }
+  .boutonAnnuler{
+    @include boutonAnnuler;
+    display: inline-block;
+    width: span(2 of 4);
+    text-align: center;
+    padding: 10px;
+  }
+  @media (min-width: $breakpoint) {
+    .boutonAnnuler:hover{
+      background-color: $dustyGray_L10;
+    }
+  }
+}

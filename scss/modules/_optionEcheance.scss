@@ -1,0 +1,102 @@
+/* --- Bouton ajouter échéance --- */
+/* Sans JavaScript par défaut, les blocs sont déployés */
+fieldset{
+  border: none;
+}
+
+.optionEcheance p{
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding: 0; }
+
+.optionEcheance__bloc{
+  margin-bottom: 10px;
+  p{
+    margin-top: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  select{
+    height: 40px;
+    @include fontSize(16px);
+    font-family: $openSansRegular;
+  }
+}
+
+.optionEcheance__bloc {
+  display: block;
+  overflow: hidden;
+  padding: 1rem;
+  transition: all 0.6s ease-in-out; }
+
+.optionEcheance__controlePoignee{
+  float: right;
+  margin-right: 10px;
+}
+
+.optionEcheance__controle {
+  outline: none;
+  border: none;
+  text-align: center;
+  background-color: $yellowGreen;
+  font-family: $economicaBold;
+  color: $tundora;
+  @include fontSize(24px);
+  padding: 5px;
+}
+
+.optionEcheance__controle,
+.optionEcheance__bloc {
+  width: 100%;
+  @media (min-width: $breakpoint) {
+    width: span(4 of 7);
+    margin-left: span(2 wide of 7);
+  }
+}
+
+/* Avec JavaScript les boutons d'actionnement du mécanisme s'affichent */
+.js .optionEcheance__controlePoignee {
+  .icone {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-position: center center;
+    background-size: contain; }
+  .icone--chevron-down{
+    background-image: url('../images/chevron_down.svg');
+    vertical-align: bottom;
+  }
+  .icone--chevron-up{
+    background-image: url('../images/chevron_up.svg');
+  }
+}
+
+
+.js .optionEcheance--isCollapsed .optionEcheance__controle {
+  background-color: $yellowGreen;
+}
+
+/* Avec JS par défaut les blocs sont cachés*/
+.js .optionEcheance--isCollapsed .optionEcheance__bloc {
+  background-color: transparent;
+  height: 0;
+  padding: 0;
+  border: 1px solid transparent; }
+.js .optionEcheance--isCollapsed .optionEcheance__bloc legend {
+  display: none; }
+
+.js .optionEcheance--isExpanded .optionEcheance__bloc {
+  background-color: white;
+  @include ombre;
+  //height: 5rem;
+}
+.js .optionEcheance--isExpanded .optionEcheance__bloc legend {
+  display: none; }
+
+@media (min-width: $breakpoint){
+  .js .optionEcheance__controle:hover,
+  .js .optionEcheance__controle:active,
+  .js .optionEcheance--isExpanded .optionEcheance__controle {
+    background-color: $cornflowerBlue;
+  }
+}

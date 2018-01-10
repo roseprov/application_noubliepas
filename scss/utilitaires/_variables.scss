@@ -1,0 +1,37 @@
+/**
+ * @author Krystina Hamel
+ * @author Rose Provencher
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * Polices de caractères
+ * Palette de couleurs
+ * Variations des couleurs
+ * Points de rupture
+ **/
+
+/** Polices de caractères **/
+$openSansRegular: 'OpenSans-Regular', Arial, sans-serif;
+$openSansBold: 'OpenSans-Bold', Arial, sans-serif;
+$economicaRegular: 'Economica-Regular', Arial, sans-serif;
+$economicaBold: 'Economica-Bold', Arial, sans-serif;
+
+/** Palette de couleurs **/
+$redDamask: #DB6E50;
+$cornflowerBlue: #5FA4F4;
+$yellowGreen: #B8E986;
+$dustyGray: #9B9B9B;
+$tundora: #4A4A4A;
+
+/** Variations des couleurs **/
+// Pour obtenir 10% plus pâle:
+$cornflowerBlue_L10: lighten($cornflowerBlue, 10%);
+$dustyGray_L10: lighten($dustyGray, 10%);
+$tundora_L50: lighten($tundora, 50%);
+
+/** Points de rupture **/
+//Mobile
+$mobile : 600px;
+$breakpoint: 601px;
+//Table
+$desktop : 1000px;
